@@ -1,0 +1,685 @@
+{
+  "metadata": {
+    "n_train_claims": 2000,
+    "n_train_samples": 1000,
+    "ids_hash": "1de6a32d87daac8b",
+    "coarse_source": "reports/thresholds_n1000_comparison.json",
+    "coarse_step": 0.05,
+    "fine_step": 0.01,
+    "fine_span": 0.05,
+    "nli_bounds": [
+      0.1,
+      0.9
+    ],
+    "emb_bounds": [
+      0.3,
+      0.85
+    ],
+    "target_precision": 0.8,
+    "target_recall": 0.75,
+    "strategies": [
+      "q_prod",
+      "f1",
+      "q_prod_constrained"
+    ],
+    "n_points_per_strategy_method": {
+      "q_prod": {
+        "nli": 11,
+        "embedding": 11,
+        "combined_or": 121,
+        "combined_and": 121
+      },
+      "f1": {
+        "nli": 11,
+        "embedding": 11,
+        "combined_or": 121,
+        "combined_and": 121
+      },
+      "q_prod_constrained": {
+        "nli": 11,
+        "embedding": 11,
+        "combined_or": 121,
+        "combined_and": 121
+      }
+    },
+    "elapsed_sec": 0.5875157080008648
+  },
+  "by_strategy": {
+    "q_prod": {
+      "best": {
+        "combined_and": {
+          "method": "combined_and",
+          "nli_thr": 0.89,
+          "emb_thr": 0.84,
+          "tp": 346,
+          "fp": 79,
+          "tn": 921,
+          "fn": 654,
+          "precision": 0.8141176470588235,
+          "recall": 0.346,
+          "f1": 0.4856140350877192,
+          "accuracy": 0.6335,
+          "q_prod": 0.5800588235294117,
+          "passes_threshold": false
+        },
+        "combined_or": {
+          "method": "combined_or",
+          "nli_thr": 0.11,
+          "emb_thr": 0.85,
+          "tp": 979,
+          "fp": 995,
+          "tn": 5,
+          "fn": 21,
+          "precision": 0.4959473150962513,
+          "recall": 0.979,
+          "f1": 0.6583725622057834,
+          "accuracy": 0.492,
+          "q_prod": 0.7374736575481257,
+          "passes_threshold": false
+        },
+        "embedding": {
+          "method": "embedding",
+          "nli_thr": null,
+          "emb_thr": 0.85,
+          "tp": 958,
+          "fp": 992,
+          "tn": 8,
+          "fn": 42,
+          "precision": 0.49128205128205127,
+          "recall": 0.958,
+          "f1": 0.6494915254237288,
+          "accuracy": 0.483,
+          "q_prod": 0.7246410256410256,
+          "passes_threshold": false
+        },
+        "nli": {
+          "method": "nli",
+          "nli_thr": 0.13,
+          "emb_thr": null,
+          "tp": 497,
+          "fp": 228,
+          "tn": 772,
+          "fn": 503,
+          "precision": 0.6855172413793104,
+          "recall": 0.497,
+          "f1": 0.576231884057971,
+          "accuracy": 0.6345,
+          "q_prod": 0.5912586206896552,
+          "passes_threshold": false
+        }
+      },
+      "factchecker_init_hint": {
+        "nli": {
+          "nli_threshold": 0.13
+        },
+        "embedding": {
+          "similarity_threshold": 0.85
+        },
+        "combined_or": {
+          "nli_threshold": 0.11,
+          "similarity_threshold": 0.85,
+          "combined_mode": "or"
+        },
+        "combined_and": {
+          "nli_threshold": 0.89,
+          "similarity_threshold": 0.84,
+          "combined_mode": "and"
+        }
+      },
+      "axes": {
+        "nli": {
+          "nli_axis": [
+            0.1,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15,
+            0.16,
+            0.17,
+            0.18,
+            0.19,
+            0.2
+          ],
+          "emb_axis": [
+            null
+          ],
+          "n_points": 11,
+          "coarse_best": {
+            "nli_thr": 0.15,
+            "emb_thr": null,
+            "q_prod": 0.5907883263009845,
+            "f1": 0.5739333722969024,
+            "precision": 0.6905766526019691,
+            "recall": 0.491
+          }
+        },
+        "embedding": {
+          "nli_axis": [
+            null
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 11,
+          "coarse_best": {
+            "nli_thr": null,
+            "emb_thr": 0.85,
+            "q_prod": 0.7246410256410256,
+            "f1": 0.6494915254237288,
+            "precision": 0.49128205128205127,
+            "recall": 0.958
+          }
+        },
+        "combined_or": {
+          "nli_axis": [
+            0.1,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15,
+            0.16,
+            0.17,
+            0.18,
+            0.19,
+            0.2
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 121,
+          "coarse_best": {
+            "nli_thr": 0.1,
+            "emb_thr": 0.85,
+            "q_prod": 0.7373481012658227,
+            "f1": 0.6581512605042018,
+            "precision": 0.4956962025316456,
+            "recall": 0.979
+          }
+        },
+        "combined_and": {
+          "nli_axis": [
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 121,
+          "coarse_best": {
+            "nli_thr": 0.9,
+            "emb_thr": 0.85,
+            "q_prod": 0.5798333333333333,
+            "f1": 0.4830985915492958,
+            "precision": 0.8166666666666667,
+            "recall": 0.343
+          }
+        }
+      }
+    },
+    "f1": {
+      "best": {
+        "combined_and": {
+          "method": "combined_and",
+          "nli_thr": 0.1,
+          "emb_thr": 0.85,
+          "tp": 481,
+          "fp": 237,
+          "tn": 763,
+          "fn": 519,
+          "precision": 0.66991643454039,
+          "recall": 0.481,
+          "f1": 0.559953434225844,
+          "accuracy": 0.622,
+          "q_prod": 0.575458217270195,
+          "passes_threshold": false
+        },
+        "combined_or": {
+          "method": "combined_or",
+          "nli_thr": 0.11,
+          "emb_thr": 0.85,
+          "tp": 979,
+          "fp": 995,
+          "tn": 5,
+          "fn": 21,
+          "precision": 0.4959473150962513,
+          "recall": 0.979,
+          "f1": 0.6583725622057834,
+          "accuracy": 0.492,
+          "q_prod": 0.7374736575481257,
+          "passes_threshold": false
+        },
+        "embedding": {
+          "method": "embedding",
+          "nli_thr": null,
+          "emb_thr": 0.85,
+          "tp": 958,
+          "fp": 992,
+          "tn": 8,
+          "fn": 42,
+          "precision": 0.49128205128205127,
+          "recall": 0.958,
+          "f1": 0.6494915254237288,
+          "accuracy": 0.483,
+          "q_prod": 0.7246410256410256,
+          "passes_threshold": false
+        },
+        "nli": {
+          "method": "nli",
+          "nli_thr": 0.13,
+          "emb_thr": null,
+          "tp": 497,
+          "fp": 228,
+          "tn": 772,
+          "fn": 503,
+          "precision": 0.6855172413793104,
+          "recall": 0.497,
+          "f1": 0.576231884057971,
+          "accuracy": 0.6345,
+          "q_prod": 0.5912586206896552,
+          "passes_threshold": false
+        }
+      },
+      "factchecker_init_hint": {
+        "nli": {
+          "nli_threshold": 0.13
+        },
+        "embedding": {
+          "similarity_threshold": 0.85
+        },
+        "combined_or": {
+          "nli_threshold": 0.11,
+          "similarity_threshold": 0.85,
+          "combined_mode": "or"
+        },
+        "combined_and": {
+          "nli_threshold": 0.1,
+          "similarity_threshold": 0.85,
+          "combined_mode": "and"
+        }
+      },
+      "axes": {
+        "nli": {
+          "nli_axis": [
+            0.1,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15,
+            0.16,
+            0.17,
+            0.18,
+            0.19,
+            0.2
+          ],
+          "emb_axis": [
+            null
+          ],
+          "n_points": 11,
+          "coarse_best": {
+            "nli_thr": 0.1,
+            "emb_thr": null,
+            "q_prod": 0.5888196500672948,
+            "f1": 0.5760183591508893,
+            "precision": 0.6756393001345895,
+            "recall": 0.502
+          }
+        },
+        "embedding": {
+          "nli_axis": [
+            null
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 11,
+          "coarse_best": {
+            "nli_thr": null,
+            "emb_thr": 0.85,
+            "q_prod": 0.7246410256410256,
+            "f1": 0.6494915254237288,
+            "precision": 0.49128205128205127,
+            "recall": 0.958
+          }
+        },
+        "combined_or": {
+          "nli_axis": [
+            0.1,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15,
+            0.16,
+            0.17,
+            0.18,
+            0.19,
+            0.2
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 121,
+          "coarse_best": {
+            "nli_thr": 0.1,
+            "emb_thr": 0.85,
+            "q_prod": 0.7373481012658227,
+            "f1": 0.6581512605042018,
+            "precision": 0.4956962025316456,
+            "recall": 0.979
+          }
+        },
+        "combined_and": {
+          "nli_axis": [
+            0.1,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15,
+            0.16,
+            0.17,
+            0.18,
+            0.19,
+            0.2
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 121,
+          "coarse_best": {
+            "nli_thr": 0.1,
+            "emb_thr": 0.85,
+            "q_prod": 0.575458217270195,
+            "f1": 0.559953434225844,
+            "precision": 0.66991643454039,
+            "recall": 0.481
+          }
+        }
+      }
+    },
+    "q_prod_constrained": {
+      "best": {
+        "combined_and": {
+          "method": "combined_and",
+          "nli_thr": 0.89,
+          "emb_thr": 0.84,
+          "tp": 346,
+          "fp": 79,
+          "tn": 921,
+          "fn": 654,
+          "precision": 0.8141176470588235,
+          "recall": 0.346,
+          "f1": 0.4856140350877192,
+          "accuracy": 0.6335,
+          "q_prod": 0.5800588235294117,
+          "passes_threshold": false
+        },
+        "combined_or": {
+          "method": "combined_or",
+          "nli_thr": 0.16,
+          "emb_thr": 0.3,
+          "tp": 515,
+          "fp": 467,
+          "tn": 533,
+          "fn": 485,
+          "precision": 0.5244399185336049,
+          "recall": 0.515,
+          "f1": 0.5196770938446015,
+          "accuracy": 0.524,
+          "q_prod": 0.5197199592668025,
+          "passes_threshold": false
+        },
+        "embedding": {
+          "method": "embedding",
+          "nli_thr": null,
+          "emb_thr": 0.85,
+          "tp": 958,
+          "fp": 992,
+          "tn": 8,
+          "fn": 42,
+          "precision": 0.49128205128205127,
+          "recall": 0.958,
+          "f1": 0.6494915254237288,
+          "accuracy": 0.483,
+          "q_prod": 0.7246410256410256,
+          "passes_threshold": false
+        },
+        "nli": {
+          "method": "nli",
+          "nli_thr": 0.89,
+          "emb_thr": null,
+          "tp": 358,
+          "fp": 82,
+          "tn": 918,
+          "fn": 642,
+          "precision": 0.8136363636363636,
+          "recall": 0.358,
+          "f1": 0.4972222222222222,
+          "accuracy": 0.638,
+          "q_prod": 0.5858181818181818,
+          "passes_threshold": false
+        }
+      },
+      "factchecker_init_hint": {
+        "nli": {
+          "nli_threshold": 0.89
+        },
+        "embedding": {
+          "similarity_threshold": 0.85
+        },
+        "combined_or": {
+          "nli_threshold": 0.16,
+          "similarity_threshold": 0.3,
+          "combined_mode": "or"
+        },
+        "combined_and": {
+          "nli_threshold": 0.89,
+          "similarity_threshold": 0.84,
+          "combined_mode": "and"
+        }
+      },
+      "axes": {
+        "nli": {
+          "nli_axis": [
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9
+          ],
+          "emb_axis": [
+            null
+          ],
+          "n_points": 11,
+          "coarse_best": {
+            "nli_thr": 0.9,
+            "emb_thr": null,
+            "q_prod": 0.5855459770114942,
+            "f1": 0.49477351916376305,
+            "precision": 0.8160919540229885,
+            "recall": 0.355
+          }
+        },
+        "embedding": {
+          "nli_axis": [
+            null
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 11,
+          "coarse_best": {
+            "nli_thr": null,
+            "emb_thr": 0.85,
+            "q_prod": 0.7246410256410256,
+            "f1": 0.6494915254237288,
+            "precision": 0.49128205128205127,
+            "recall": 0.958
+          }
+        },
+        "combined_or": {
+          "nli_axis": [
+            0.1,
+            0.11,
+            0.12,
+            0.13,
+            0.14,
+            0.15,
+            0.16,
+            0.17,
+            0.18,
+            0.19,
+            0.2
+          ],
+          "emb_axis": [
+            0.3,
+            0.31,
+            0.32,
+            0.33,
+            0.34,
+            0.35,
+            0.36,
+            0.37,
+            0.38,
+            0.39,
+            0.4
+          ],
+          "n_points": 121,
+          "coarse_best": {
+            "nli_thr": 0.15,
+            "emb_thr": 0.3,
+            "q_prod": 0.5206703853955376,
+            "f1": 0.5206445115810675,
+            "precision": 0.5243407707910751,
+            "recall": 0.517
+          }
+        },
+        "combined_and": {
+          "nli_axis": [
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85,
+            0.86,
+            0.87,
+            0.88,
+            0.89,
+            0.9
+          ],
+          "emb_axis": [
+            0.75,
+            0.76,
+            0.77,
+            0.78,
+            0.79,
+            0.8,
+            0.81,
+            0.82,
+            0.83,
+            0.84,
+            0.85
+          ],
+          "n_points": 121,
+          "coarse_best": {
+            "nli_thr": 0.9,
+            "emb_thr": 0.85,
+            "q_prod": 0.5798333333333333,
+            "f1": 0.4830985915492958,
+            "precision": 0.8166666666666667,
+            "recall": 0.343
+          }
+        }
+      }
+    }
+  }
+}

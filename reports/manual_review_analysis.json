@@ -1,0 +1,151 @@
+{
+  "haiku_arbiter": {
+    "n_marked": 100,
+    "distribution": {
+      "c": 27,
+      "a": 56,
+      "b": 17
+    },
+    "percentages": {
+      "a": 56.0,
+      "b": 17.0,
+      "c": 27.0
+    },
+    "wilson_ci": {
+      "a": [
+        0.4622792771125631,
+        0.6532813459903167
+      ],
+      "b": [
+        0.10893476059773155,
+        0.25548181233642975
+      ],
+      "c": [
+        0.1926946091766482,
+        0.3643230022623127
+      ]
+    }
+  },
+  "gpt_arbiter": {
+    "n_marked": 100,
+    "distribution": {
+      "a": 38,
+      "c": 38,
+      "b": 24
+    },
+    "percentages": {
+      "a": 38.0,
+      "b": 24.0,
+      "c": 38.0
+    },
+    "wilson_ci": {
+      "a": [
+        0.2909744920013438,
+        0.47790426179289663
+      ],
+      "b": [
+        0.16691211265459965,
+        0.3323251872329213
+      ],
+      "c": [
+        0.2909744920013438,
+        0.47790426179289663
+      ]
+    }
+  },
+  "cross_pairs_count": 6,
+  "haiku_internal_pairs": 0,
+  "gpt_internal_pairs": 0,
+  "corrected_accuracy": {
+    "Haiku-арбитр": {
+      "raw_accuracy": 0.8382722250125565,
+      "corrected_accuracy_strict": 0.9563335007533902,
+      "corrected_acc_ci": [
+        0.9410788514673708,
+        0.9688359296057857
+      ],
+      "corrected_accuracy_compromise": 0.9288397790055248,
+      "p_bad_label": 0.56,
+      "p_evasive": 0.17,
+      "p_model_miss": 0.27,
+      "n_disagree_total": 644,
+      "n_total": 3982
+    },
+    "GPT-арбитр": {
+      "raw_accuracy": 0.8367654445002511,
+      "corrected_accuracy_strict": 0.9379708689100954,
+      "corrected_acc_ci": [
+        0.9219895102548009,
+        0.9525029081363954
+      ],
+      "corrected_accuracy_compromise": 0.8987945755901557,
+      "p_bad_label": 0.38,
+      "p_evasive": 0.24,
+      "p_model_miss": 0.38,
+      "n_disagree_total": 650,
+      "n_total": 3982
+    }
+  },
+  "agreements_with_auto_classifiers": {
+    "haiku_manual_vs_haiku_classifier": {
+      "matches": 65,
+      "total": 100,
+      "agreement": 0.65,
+      "matrix": {
+        "c_vs_a": 21,
+        "a_vs_a": 51,
+        "c_vs_c": 6,
+        "b_vs_b": 8,
+        "b_vs_a": 9,
+        "a_vs_b": 3,
+        "a_vs_c": 2
+      }
+    },
+    "haiku_manual_vs_gpt_classifier": {
+      "matches": 65,
+      "total": 100,
+      "agreement": 0.65,
+      "matrix": {
+        "c_vs_a": 12,
+        "a_vs_a": 42,
+        "c_vs_c": 13,
+        "a_vs_c": 11,
+        "b_vs_b": 10,
+        "b_vs_a": 6,
+        "a_vs_b": 3,
+        "b_vs_c": 1,
+        "c_vs_b": 2
+      }
+    },
+    "gpt_manual_vs_haiku_classifier": {
+      "matches": 58,
+      "total": 100,
+      "agreement": 0.58,
+      "matrix": {
+        "a_vs_a": 35,
+        "c_vs_a": 30,
+        "b_vs_a": 7,
+        "b_vs_b": 17,
+        "a_vs_c": 2,
+        "c_vs_c": 6,
+        "a_vs_b": 1,
+        "c_vs_b": 2
+      }
+    },
+    "gpt_manual_vs_gpt_classifier": {
+      "matches": 55,
+      "total": 100,
+      "agreement": 0.55,
+      "matrix": {
+        "a_vs_a": 30,
+        "c_vs_a": 28,
+        "b_vs_b": 21,
+        "c_vs_b": 6,
+        "a_vs_b": 6,
+        "a_vs_c": 2,
+        "b_vs_a": 3,
+        "c_vs_c": 4
+      }
+    }
+  }
+}

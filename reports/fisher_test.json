@@ -1,0 +1,27 @@
+{
+  "source": "reports/disagreements_intersection.json",
+  "n_total": 3982,
+  "contingency_table": {
+    "haiku_disagrees_gpt_disagrees": 378,
+    "haiku_disagrees_gpt_agrees": 266,
+    "haiku_agrees_gpt_disagrees": 272,
+    "haiku_agrees_gpt_agrees": 3066
+  },
+  "marginals": {
+    "haiku_disagree_total": 644,
+    "gpt_disagree_total": 650,
+    "expected_intersection_under_h0": 105.12
+  },
+  "fisher_exact": {
+    "odds_ratio": 16.018188854489164,
+    "p_value": 1.3205595594184613e-172,
+    "log10_p": -171.8792420066165,
+    "alternative": "two-sided"
+  },
+  "chi2_contingency": {
+    "chi2": 1006.129565255833,
+    "p_value": 8.354556290031524e-221,
+    "log10_p": -220.07807661051123,
+    "dof": 1
+  }
+}

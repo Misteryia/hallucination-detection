@@ -1,0 +1,153 @@
+{
+  "source": "reports/bootstrap_main_metrics.json",
+  "lambdas": [
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7
+  ],
+  "methods": [
+    {
+      "name": "NLI/F1",
+      "P": 0.6943371943371943,
+      "R": 0.5419387242591662
+    },
+    {
+      "name": "embedding/q_prod",
+      "P": 0.4930555555555556,
+      "R": 0.9628327473631341
+    },
+    {
+      "name": "combined-or/q_prod",
+      "P": 0.49707602339181284,
+      "R": 0.9819186338523355
+    },
+    {
+      "name": "combined-and/q_prod",
+      "P": 0.8299024918743229,
+      "R": 0.3847312908086389
+    },
+    {
+      "name": "LLM-as-judge (Haiku)",
+      "P": 0.8654367878459034,
+      "R": 0.8011049723756906
+    },
+    {
+      "name": "LLM-as-judge (GPT)",
+      "P": 0.95581237253569,
+      "R": 0.7061778001004521
+    }
+  ],
+  "values": {
+    "NLI/F1": {
+      "P": 0.6943371943371943,
+      "R": 0.5419387242591662,
+      "q_lambda": {
+        "0.3": 0.5877,
+        "0.4": 0.6029,
+        "0.5": 0.6181,
+        "0.6": 0.6334,
+        "0.7": 0.6486
+      }
+    },
+    "embedding/q_prod": {
+      "P": 0.4930555555555556,
+      "R": 0.9628327473631341,
+      "q_lambda": {
+        "0.3": 0.8219,
+        "0.4": 0.7749,
+        "0.5": 0.7279,
+        "0.6": 0.681,
+        "0.7": 0.634
+      }
+    },
+    "combined-or/q_prod": {
+      "P": 0.49707602339181284,
+      "R": 0.9819186338523355,
+      "q_lambda": {
+        "0.3": 0.8365,
+        "0.4": 0.788,
+        "0.5": 0.7395,
+        "0.6": 0.691,
+        "0.7": 0.6425
+      }
+    },
+    "combined-and/q_prod": {
+      "P": 0.8299024918743229,
+      "R": 0.3847312908086389,
+      "q_lambda": {
+        "0.3": 0.5183,
+        "0.4": 0.5628,
+        "0.5": 0.6073,
+        "0.6": 0.6518,
+        "0.7": 0.6964
+      }
+    },
+    "LLM-as-judge (Haiku)": {
+      "P": 0.8654367878459034,
+      "R": 0.8011049723756906,
+      "q_lambda": {
+        "0.3": 0.8204,
+        "0.4": 0.8268,
+        "0.5": 0.8333,
+        "0.6": 0.8397,
+        "0.7": 0.8461
+      }
+    },
+    "LLM-as-judge (GPT)": {
+      "P": 0.95581237253569,
+      "R": 0.7061778001004521,
+      "q_lambda": {
+        "0.3": 0.7811,
+        "0.4": 0.806,
+        "0.5": 0.831,
+        "0.6": 0.856,
+        "0.7": 0.8809
+      }
+    }
+  },
+  "orders_by_lambda": {
+    "0.3": [
+      "combined-or/q_prod",
+      "embedding/q_prod",
+      "LLM-as-judge (Haiku)",
+      "LLM-as-judge (GPT)",
+      "NLI/F1",
+      "combined-and/q_prod"
+    ],
+    "0.4": [
+      "LLM-as-judge (Haiku)",
+      "LLM-as-judge (GPT)",
+      "combined-or/q_prod",
+      "embedding/q_prod",
+      "NLI/F1",
+      "combined-and/q_prod"
+    ],
+    "0.5": [
+      "LLM-as-judge (Haiku)",
+      "LLM-as-judge (GPT)",
+      "combined-or/q_prod",
+      "embedding/q_prod",
+      "NLI/F1",
+      "combined-and/q_prod"
+    ],
+    "0.6": [
+      "LLM-as-judge (GPT)",
+      "LLM-as-judge (Haiku)",
+      "combined-or/q_prod",
+      "embedding/q_prod",
+      "combined-and/q_prod",
+      "NLI/F1"
+    ],
+    "0.7": [
+      "LLM-as-judge (GPT)",
+      "LLM-as-judge (Haiku)",
+      "combined-and/q_prod",
+      "NLI/F1",
+      "combined-or/q_prod",
+      "embedding/q_prod"
+    ]
+  },
+  "order_stable_in_range": false
+}

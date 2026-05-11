@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка текста — halu_detect</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+               max-width: 1100px; margin: 2em auto; padding: 0 1em; color: #222; line-height: 1.5; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+        h2 { color: #2c3e50; margin-top: 1.8em; }
+        .meta { background: #fff3cd; padding: 0.8em 1em; border-left: 4px solid #ffc107; margin-bottom: 1.5em; }
+        .meta strong { display: inline-block; min-width: 9em; }
+        .text-block { padding: 1em 1.2em; border: 1px solid #ddd; background: #fafafa;
+                      border-radius: 4px; margin-bottom: 1.5em; line-height: 1.9;
+                      white-space: pre-wrap; word-wrap: break-word; }
+        .hallu { background: #f8d7da; padding: 0.1em 0.3em; border-radius: 3px;
+                 cursor: help; border-bottom: 2px solid #dc3545; }
+        .ok    { background: #d4edda; padding: 0.1em 0.3em; border-radius: 3px;
+                 cursor: help; border-bottom: 2px solid #28a745; }
+        .legend span { display: inline-block; margin-right: 1em; }
+        table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+        th, td { padding: 0.5em 0.8em; border: 1px solid #ddd; text-align: left; vertical-align: top; }
+        th { background: #f5f5f5; font-weight: 600; }
+        .verdict-hallu { color: #c00; font-weight: 600; }
+        .verdict-ok    { color: #2a7; font-weight: 600; }
+        code { background: #f5f5f5; padding: 0.1em 0.3em; border-radius: 3px;
+               font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.9em; }
+        .footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #eee;
+                  font-size: 0.85em; color: #888; text-align: center; }
+        .summary-stats { display: flex; gap: 2em; margin: 1em 0; }
+        .summary-stats div { padding: 0.6em 1em; border-radius: 4px; }
+        .summary-stats .total { background: #e9ecef; }
+        .summary-stats .hallu-count { background: #f8d7da; }
+        .summary-stats .ok-count { background: #d4edda; }
+    </style>
+</head>
+<body>
+    <h1>Результаты проверки текста</h1>
+
+    <div class="meta">
+        <strong>Метод:</strong> <code>{{ metadata.method }}</code><br>
+        <strong>Утверждений:</strong> {{ metadata.n_verdicts }}<br>
+        <strong>Время:</strong> {{ metadata.timestamp }}
+    </div>
+
+    <div class="summary-stats">
+        <div class="total"><strong>Всего:</strong> {{ summary.total }}</div>
+        <div class="hallu-count"><strong>Галлюцинаций:</strong> {{ summary.hallucinations }}</div>
+        <div class="ok-count"><strong>Подтверждено:</strong> {{ summary.ok }}</div>
+    </div>
+
+    <h2>Текст с подсветкой</h2>
+    <p class="legend">
+        <span class="ok">— подтверждённое утверждение</span>
+        <span class="hallu">— обнаруженная галлюцинация</span>
+    </p>
+    <div class="text-block">{{ highlighted_text }}</div>
+
+    <h2>Все вердикты</h2>
+    <table>
+        <tr><th>#</th><th>Claim</th><th>Verdict</th><th>Confidence</th><th>Matched fact</th></tr>
+        {% for v in verdicts %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ v.claim }}</td>
+            <td>
+                {% if v.is_hallucination %}<span class="verdict-hallu">HALLU</span>
+                {% else %}<span class="verdict-ok">OK</span>{% endif %}
+            </td>
+            <td>{{ '%.3f'|format(v.confidence) }}</td>
+            <td>{{ v.matched_fact or '—' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="footer">halu_detect v{{ version }} · сгенерировано {{ metadata.timestamp }}</div>
+</body>
+</html>

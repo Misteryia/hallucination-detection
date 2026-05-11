@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёт о детектировании галлюцинаций — {{ metadata.method }}</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+               max-width: 1100px; margin: 2em auto; padding: 0 1em; color: #222; line-height: 1.5; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+        h2 { color: #2c3e50; margin-top: 1.8em; }
+        table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+        th, td { padding: 0.5em 0.8em; border: 1px solid #ddd; text-align: left; vertical-align: top; }
+        th { background: #f5f5f5; font-weight: 600; }
+        .meta { background: #fff3cd; padding: 0.8em 1em; border-left: 4px solid #ffc107; margin-bottom: 1.5em; }
+        .meta strong { display: inline-block; min-width: 9em; }
+        .pass { background: #d4edda; }
+        .fail { background: #f8d7da; }
+        .info { background: #fff3cd; }
+        .confusion-matrix { width: auto; }
+        .confusion-matrix th { text-align: center; }
+        .confusion-matrix td { text-align: center; font-family: monospace; font-size: 1.1em; }
+        .confusion-matrix td.tp, .confusion-matrix td.tn { background: #d4edda; }
+        .confusion-matrix td.fp, .confusion-matrix td.fn { background: #f8d7da; }
+        code { background: #f5f5f5; padding: 0.1em 0.3em; border-radius: 3px;
+               font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.9em; }
+        .footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #eee;
+                  font-size: 0.85em; color: #888; text-align: center; }
+        .empty-note { color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>Отчёт о детектировании галлюцинаций</h1>
+
+    <div class="meta">
+        <strong>Метод:</strong> <code>{{ metadata.method }}</code><br>
+        <strong>Датасет:</strong> {{ metadata.dataset }}<br>
+        <strong>Примеров:</strong> {{ metadata.n_examples }}<br>
+        <strong>Время:</strong> {{ metadata.timestamp }}
+    </div>
+
+    <h2>Метрики качества</h2>
+    <table>
+        <tr><th>Метрика</th><th>Значение</th><th>Цель</th><th>Статус</th></tr>
+        <tr class="{% if metrics.precision >= metrics.target_precision %}pass{% else %}fail{% endif %}">
+            <td>Precision</td>
+            <td>{{ '%.3f'|format(metrics.precision) }}</td>
+            <td>≥ {{ '%.2f'|format(metrics.target_precision) }}</td>
+            <td>{% if metrics.precision >= metrics.target_precision %}OK{% else %}—{% endif %}</td>
+        </tr>
+        <tr class="{% if metrics.recall >= metrics.target_recall %}pass{% else %}fail{% endif %}">
+            <td>Recall</td>
+            <td>{{ '%.3f'|format(metrics.recall) }}</td>
+            <td>≥ {{ '%.2f'|format(metrics.target_recall) }}</td>
+            <td>{% if metrics.recall >= metrics.target_recall %}OK{% else %}—{% endif %}</td>
+        </tr>
+        <tr><td>F1</td><td>{{ '%.3f'|format(metrics.f1) }}</td><td>—</td><td></td></tr>
+        <tr><td>Accuracy</td><td>{{ '%.3f'|format(metrics.accuracy) }}</td><td>—</td><td></td></tr>
+        <tr class="{% if metrics.passes_quality_threshold %}pass{% else %}fail{% endif %}">
+            <td>Q<sub>prod</sub> = 0.5·P + 0.5·R</td>
+            <td>{{ '%.3f'|format(metrics.q_prod) }}</td>
+            <td>≥ {{ '%.3f'|format(target_q_prod) }}</td>
+            <td>{% if metrics.passes_quality_threshold %}OK{% else %}—{% endif %}</td>
+        </tr>
+    </table>
+
+    <h2>Confusion matrix</h2>
+    <table class="confusion-matrix">
+        <tr><th></th><th>Предсказан HALLU</th><th>Предсказан OK</th></tr>
+        <tr>
+            <th>Эталон HALLU</th>
+            <td class="tp">TP = {{ metrics.true_positive }}</td>
+            <td class="fn">FN = {{ metrics.false_negative }}</td>
+        </tr>
+        <tr>
+            <th>Эталон OK</th>
+            <td class="fp">FP = {{ metrics.false_positive }}</td>
+            <td class="tn">TN = {{ metrics.true_negative }}</td>
+        </tr>
+    </table>
+
+    <h2>Ложные срабатывания (FP) — топ-{{ errors.false_positives|length }}</h2>
+    {% if errors.false_positives %}
+    <table>
+        <tr><th>#</th><th>Claim</th><th>Matched fact</th><th>Confidence</th></tr>
+        {% for r in errors.false_positives %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ r.claim }}</td>
+            <td>{{ r.matched_fact or '—' }}</td>
+            <td>{{ '%.3f'|format(r.confidence) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="empty-note">Нет ложных срабатываний.</p>
+    {% endif %}
+
+    <h2>Пропущенные галлюцинации (FN) — топ-{{ errors.false_negatives|length }}</h2>
+    {% if errors.false_negatives %}
+    <table>
+        <tr><th>#</th><th>Claim</th><th>Matched fact</th><th>Confidence</th></tr>
+        {% for r in errors.false_negatives %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ r.claim }}</td>
+            <td>{{ r.matched_fact or '—' }}</td>
+            <td>{{ '%.3f'|format(r.confidence) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="empty-note">Нет пропущенных галлюцинаций.</p>
+    {% endif %}
+
+    <div class="footer">halu_detect v{{ version }} · сгенерировано {{ metadata.timestamp }}</div>
+</body>
+</html>

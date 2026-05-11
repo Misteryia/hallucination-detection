@@ -1,0 +1,22 @@
+{
+  "Расхождения GPT-арбитра": {
+    "n": 650,
+    "agree": 479,
+    "p_observed": 0.7369230769230769,
+    "p_expected": 0.5348355029585798,
+    "kappa": 0.434443245883622,
+    "interpretation": "умеренное (moderate)",
+    "haiku_clf_source": "reports/disagreements_gpt_classified_by_haiku.json",
+    "gpt_clf_source": "reports/disagreements_gpt_classified_by_gpt.json"
+  },
+  "Расхождения Haiku-арбитра": {
+    "n": 644,
+    "agree": 437,
+    "p_observed": 0.6785714285714286,
+    "p_expected": 0.5833204737471548,
+    "kappa": 0.22859523644191387,
+    "interpretation": "слабое (fair)",
+    "haiku_clf_source": "reports/disagreements_auto.json",
+    "gpt_clf_source": "reports/disagreements_auto_openai.json"
+  }
+}

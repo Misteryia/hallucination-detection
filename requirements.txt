@@ -1,0 +1,14 @@
+# Базовые зависимости (CLI + классические методы + статистический анализ).
+# Зеркалит секцию [project.dependencies] в pyproject.toml.
+# Для LLM-as-judge скриптов в scripts/ установите дополнительно:
+#     pip install -e ".[llm]"
+# или вручную добавьте anthropic>=0.34.0 openai>=1.30.0 python-dotenv>=1.0.0
+transformers>=4.40.0
+torch>=2.2.0
+sentence-transformers>=2.7.0
+spacy>=3.7.0
+click>=8.1.0
+jinja2>=3.1.0
+tqdm>=4.66.0
+numpy>=1.26.0
+scipy>=1.10.0

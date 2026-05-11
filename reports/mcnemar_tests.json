@@ -1,0 +1,47 @@
+{
+  "Haiku vs GPT": {
+    "label_a": "Haiku",
+    "label_b": "GPT",
+    "n_common": 3981,
+    "a_both_correct": 3065,
+    "b_only_a_correct": 272,
+    "c_only_b_correct": 266,
+    "d_both_wrong": 378,
+    "accuracy_a": 0.8382316001004773,
+    "accuracy_b": 0.8367244410952022,
+    "method": "chi2-yates",
+    "statistic": 0.046468401486988845,
+    "p_value": 0.8293266011476743,
+    "significant_at_0.05": false
+  },
+  "NLI/F1 vs Haiku": {
+    "label_a": "NLI/F1",
+    "label_b": "Haiku",
+    "n_common": 3981,
+    "a_both_correct": 2369,
+    "b_only_a_correct": 225,
+    "c_only_b_correct": 968,
+    "d_both_wrong": 419,
+    "accuracy_a": 0.6515950766139161,
+    "accuracy_b": 0.8382316001004773,
+    "method": "chi2-yates",
+    "statistic": 461.4953897736798,
+    "p_value": 0.0,
+    "significant_at_0.05": true
+  },
+  "NLI/F1 vs GPT": {
+    "label_a": "NLI/F1",
+    "label_b": "GPT",
+    "n_common": 3982,
+    "a_both_correct": 2411,
+    "b_only_a_correct": 184,
+    "c_only_b_correct": 921,
+    "d_both_wrong": 466,
+    "accuracy_a": 0.6516825715720743,
+    "accuracy_b": 0.8367654445002511,
+    "method": "chi2-yates",
+    "statistic": 490.22262443438916,
+    "p_value": 0.0,
+    "significant_at_0.05": true
+  }
+}

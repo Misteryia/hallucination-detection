@@ -1,0 +1,13 @@
+{
+  "h_only": 266,
+  "g_only": 272,
+  "intersection": 378,
+  "union": 916,
+  "h_total": 644,
+  "g_total": 650,
+  "jaccard": 0.4126637554585153,
+  "frac_of_haiku": 0.5869565217391305,
+  "frac_of_gpt": 0.5815384615384616,
+  "frac_union_of_total": 0.2300351582119538,
+  "frac_intersection_of_total": 0.09492717227523857
+}

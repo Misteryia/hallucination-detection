@@ -1,0 +1,43 @@
+[project]
+name = "halu-detect"
+version = "0.1.0"
+description = "Утилита детектирования галлюцинаций в текстах LLM"
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+dependencies = [
+    "transformers>=4.40.0",
+    "torch>=2.2.0",
+    "sentence-transformers>=2.7.0",
+    "spacy>=3.7.0",
+    "click>=8.1.0",
+    "jinja2>=3.1.0",
+    "tqdm>=4.66.0",
+    "numpy>=1.26.0",
+    "scipy>=1.10.0",
+]
+
+[project.optional-dependencies]
+llm = [
+    "anthropic>=0.34.0",
+    "openai>=1.30.0",
+    "python-dotenv>=1.0.0",
+]
+all = [
+    "anthropic>=0.34.0",
+    "openai>=1.30.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+haludetect = "halu_detect.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["halu_detect*"]
+
+[tool.setuptools.package-data]
+halu_detect = ["templates/*.j2"]
