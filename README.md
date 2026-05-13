@@ -14,8 +14,8 @@
 ## Установка
 
 ```bash
-git clone git@github.com:Misteryia/halu-detect.git
-cd halu-detect
+git clone git@github.com:Misteryia/hallucination-detection.git
+cd hallucination-detection
 python -m venv venv
 source venv/bin/activate
 
